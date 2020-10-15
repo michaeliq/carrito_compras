@@ -1,10 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
-from .app import db
+from app import db
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////ADV.sql'
+class Producto(db.Model):
 
+    __tablename__="productos"
 
-class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     producto = db.Column(db.String(35), unique=True, nullable=False)
     precio = db.Column(db.Float, nullable=False)
