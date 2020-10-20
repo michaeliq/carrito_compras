@@ -1,8 +1,35 @@
-<h1> pagina de inicio... yupi viba ... uuuu </h1>
-<br>
+{% extends "bootstrap/base.html" %}
 
-{% for producto in productos %}
+{% block head %}
+<meta name="viewport" content="width=device-width, user-scalable=no">
 
-<h3> {{producto.producto}} precio: {{producto.precio}} </h3>
+<link rel='stylesheet' type='text/css' href='{{ url_for('static',filename="estilos_galeria.css") }}'
 
-{% endfor %}
+{% endblock %}
+
+{% block title %} Productos {% endblock %} 
+
+{% block content %}
+<div class="gallery" id="gallery">
+
+	<div class="pics animation ">
+		<img class="" src="{{ url_for('static',filename='pan.jpg') }}">
+		<div class=pics__info">
+			<p>pan</p>
+		</div>
+	</div>
+	<div class="pics animation ">
+		<img class="" src="{{ url_for('static',filename='mantequilla.jpg') }}">
+		<div class=pics__info">
+			<p>mantequilla</p>
+		</div>
+	</div>
+	<div class=" pics animation ">
+		<img class="" src="{{ url_for('static',filename='pescado.jpg') }}">
+		<div class=pics__info">
+			<p>pescado</p>
+		</div>
+	</div>
+
+</div>
+{% endblock %}

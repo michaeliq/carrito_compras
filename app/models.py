@@ -11,3 +11,38 @@ class Producto(db.Model):
 
     def __repr__(self):
         return '<Producto: %r>' % self.producto
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def values(self):
+        return [self.id,self.producto,self.precio,self.descripcion]
+
+    def update_prod(self,n_nombre,n_precio,n_descripcion):
+        self.producto = n_nombre or self.producto
+        self.precio = n_precio or self.precio
+        self.descripcion = n_descripcion or self.descripcion
+
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+class Venta(db.Model):
+
+    __tablename__='ventas'
+
+    def __init__(self,valor_compra,productos):
+        self.valor_compra = valor_compra
+        self.productos = prouctos
+        self.num_factura = 0 #añadir qr
+
+    @staticmethod
+    def obtener_factura(qr):
+        return Venta.query.filter_by(num_factura = qr).first()
+
+    def fijar_numero_fact(self):
+        pass
+

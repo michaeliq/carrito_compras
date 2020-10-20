@@ -1,1 +1,13 @@
-<h1> AQUI ES AREA RESTRINGIDA... LARGATE</h1>
+
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<ul class="list-group list-group-flush">
+	{% for producto in prod %}
+	<li class="list-group-item mx-2">{{ producto.producto }}
+		<a href="{{ url_for('admin.update_producto',_id=producto.id ) }}" class=" btn btn-danger"> Actualizar </a>
+
+		<a href="{{ url_for('admin.delete',id=producto.id) }}" class=" btn btn-primary">Eliminar</a> </li>
+	{% endfor %}
+</ul>
+{% endblock %}

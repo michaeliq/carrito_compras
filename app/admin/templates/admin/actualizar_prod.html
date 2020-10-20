@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+
+<form action="" method="POST" class="px-1" novalidate>
+	{{ forms.hidden_tag() }}
+	<input type="hidden" name="id" value="{{values.id}}">
+<div class="form-group">
+	{{ forms.nombreProducto.label }}
+	{{ forms.nombreProducto(class_="form-control",placeholder= values.producto) }}
+</div>
+<div class="form-group">
+	{{ forms.precio(class_="form-control",placeholder= values.precio) }}
+</div>
+<div class="form-group">
+	{{ forms.descripcion(class_="form-control", placeholder= values.descripcion) }}
+</div>
+	{{ forms.submitU(class_="btn btn-primary") }}
+</div>
+
+
+{% endblock %}
