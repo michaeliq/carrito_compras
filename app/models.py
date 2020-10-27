@@ -1,4 +1,19 @@
 from app import db
+from app import login_manager
+from flask_login import UserMixin
+
+class User(db.Model, UserMixin):
+
+    __tablename__= 'usuarios'
+
+    id = db.Column(db.Integer,primary_key=True)
+    email = db.Column(db.String(50),nullable=False)
+    password = db.Column(db.String(400),nullable=False)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(user_id)
+
 
 class Producto(db.Model):
 
@@ -29,7 +44,7 @@ class Producto(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
+'''
 class Venta(db.Model):
 
     __tablename__='ventas'
@@ -45,4 +60,4 @@ class Venta(db.Model):
 
     def fijar_numero_fact(self):
         pass
-
+'''

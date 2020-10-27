@@ -41,6 +41,7 @@ def update_producto(_id=None):
         values = Producto.query.get(_id)
         return render_template('admin/actualizar_prod.html',forms=form,values=values)
 
+
 @admin.route('/admin/delete/<id>/',methods=['GET'])
 def delete(id):
     if request.method == 'GET':
@@ -80,4 +81,5 @@ def report_product(nomb_p):
 @admin.route('/admin/control_panel/')
 def control_panel():
     pass
+
 
