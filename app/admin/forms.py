@@ -12,7 +12,18 @@ class FormCrearProducto(FlaskForm):
 
     descripcion = TextAreaField('',validators=[DataRequired(),Length(max=250)])
 
-    submit = SubmitField('crear')
+    submit = SubmitField('ingresar')
+
+
+class FormModificar(FlaskForm):
+
+
+    nombreProducto = StringField('',validators=[DataRequired(),Length(max=250)])
+
+    precio = FloatField('',validators=[DataRequired()])
+
+    descripcion = TextAreaField('',validators=[DataRequired(),Length(max=50)])
+
+    image_url = StringField('',validators=[DataRequired()])
     
-    #solo para actualizar datos
     submitU = SubmitField('Actualizar')

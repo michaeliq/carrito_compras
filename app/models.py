@@ -14,33 +14,44 @@ class User(db.Model, UserMixin):
     def load_user(user_id):
         return User.query.get(user_id)
 
+    @staticmethod
+    def save(ref):
+        db.session.add(ref)
+        db.session.commit()
 
 class Producto(db.Model):
 
     __tablename__="productos"
 
+    
     id = db.Column(db.Integer, primary_key=True)
     producto = db.Column(db.String(35), unique=True, nullable=False)
     precio = db.Column(db.Float, nullable=False)
     descripcion = db.Column(db.String(100))
+    img_pro = db.Column(db.String(100),default="")
 
     def __repr__(self):
         return '<Producto: %r>' % self.producto
 
-    def save(self):
-        db.session.add(self)
+    @staticmethod
+    def save(ref):
+        db.session.add(ref)
         db.session.commit()
 
+    @classmethod
     def values(self):
-        return [self.id,self.producto,self.precio,self.descripcion]
+        return [self.id,self.producto,self.precio,self.descripcion,self.img_pro]
 
-    def update_prod(self,n_nombre,n_precio,n_descripcion):
+    @classmethod
+    def update_prod(self,n_nombre,n_precio,n_descripcion,image):
         self.producto = n_nombre or self.producto
         self.precio = n_precio or self.precio
         self.descripcion = n_descripcion or self.descripcion
+        self.img_pro = image or self.img_pro
 
         db.session.commit()
 
+    @classmethod
     def delete(self):
         db.session.delete(self)
         db.session.commit()

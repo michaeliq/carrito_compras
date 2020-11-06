@@ -6,6 +6,6 @@ from app.models import Producto
 @sell.route('/home/')
 def home():
     productos = Producto.query.all()
-    return render_template('sell/home_page.html',productos = productos)
+    return render_template('sell/home_page.html',items = productos)
 
 

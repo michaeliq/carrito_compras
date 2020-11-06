@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-login users
+Sign Up User
 {% endblock %}
 
 {% block header %}
@@ -14,7 +14,7 @@ login users
 
 <div class="d-flex bg-info rounded">
 	<div class="d-flex justify-content-center">	
-	<h1>Ingresa a tu gestor ADV</h1>
+	<h1>Registrate en tu gestor ADV</h1>
 	</div>
 </div>
 <form action="" method="post" class="form mt-1" novalidate>
@@ -33,9 +33,5 @@ login users
 	{{ form.submit(class_="btn btn-success") }}
 	</div>
 </form>
-<div class="m-2">
-	<p class="font-weight-lighter"> No estas registrado,<a href="{{url_for('auth.signup')}}" class="text-decoration-none"> haz click aqui</a></p>
 </div>
-</div>
-
 {% endblock %}
