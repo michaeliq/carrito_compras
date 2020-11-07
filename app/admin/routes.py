@@ -4,7 +4,7 @@ from openpyxl import Workbook
 from os import path
 
 from app.models import Producto
-from .forms import FormCrearProducto
+from .forms import FormCrearProducto, FormModificar
 from app.obtener_img import fijar_img
 
 from . import admin

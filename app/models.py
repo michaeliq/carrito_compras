@@ -33,16 +33,15 @@ class Producto(db.Model):
     def __repr__(self):
         return '<Producto: %r>' % self.producto
 
-    @staticmethod
-    def save(ref):
-        db.session.add(ref)
+    def save(self):
+        db.session.add(self)
         db.session.commit()
 
-    @classmethod
+
     def values(self):
         return [self.id,self.producto,self.precio,self.descripcion,self.img_pro]
 
-    @classmethod
+
     def update_prod(self,n_nombre,n_precio,n_descripcion,image):
         self.producto = n_nombre or self.producto
         self.precio = n_precio or self.precio
@@ -51,7 +50,6 @@ class Producto(db.Model):
 
         db.session.commit()
 
-    @classmethod
     def delete(self):
         db.session.delete(self)
         db.session.commit()
