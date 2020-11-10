@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     email = db.Column(db.String(50),nullable=False)
     password = db.Column(db.String(400),nullable=False)
+    carrito_personal = db.relationship('Venta',backref='productos_a_comprar')
 
     @login_manager.user_loader
     def load_user(user_id):
@@ -53,20 +54,17 @@ class Producto(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-'''
-class Venta(db.Model):
 
-    __tablename__='ventas'
+class Carrito(db.Model):
 
-    def __init__(self,valor_compra,productos):
-        self.valor_compra = valor_compra
-        self.productos = prouctos
-        self.num_factura = 0 #añadir qr
+    __tablename__='carrito'
+    
+    id_carrito = db.Column(db.Integer,primary_key=True)
+    estado = db.Column(db.String,nullable=False)
+    valor_compra = db.Column(db.Float,nullable=False)
+    productos = db.Column(db.Float,nullable=False)
+    id_cliente = db.Column(db.Integer,db.ForeignKey('usuarios.id'))
 
-    @staticmethod
-    def obtener_factura(qr):
-        return Venta.query.filter_by(num_factura = qr).first()
+    def actuaizar(self):
+        db.session.commit()
 
-    def fijar_numero_fact(self):
-        pass
-'''
