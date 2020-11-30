@@ -80,3 +80,8 @@
   width: 200px;
 }
 
+.contenedor .tarjeta .tarjeta__menu .tarjeta__menu_buton button{
+ position: relative;
+ background-color: #0288d1;
+}
+

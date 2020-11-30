@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     email = db.Column(db.String(50),nullable=False)
     password = db.Column(db.String(400),nullable=False)
-    carrito_personal = db.relationship('Venta',backref='productos_a_comprar')
+    carrito_personal = db.relationship('Carrito', backref='productos_a_comprar')
 
     @login_manager.user_loader
     def load_user(user_id):
